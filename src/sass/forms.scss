@@ -38,11 +38,22 @@
 		}
 	}
 
+	&--yellow{
+		background: $yellow;
+		color: #fff;
+		&:hover{
+			background: $purple;
+		}
+		&:active{
+			background: $purple;
+		}
+	}
+
 	&--m{
-		border-radius: 8px;
+		border-radius: 0px;
 		font-weight: 700;
-		font-size: 12px;
-		padding: 8px 20px 8px;
+		font-size: 16px;
+		padding: 10px 20px 10px;
 	}
 
 	&--l{
@@ -76,7 +87,7 @@
 
 	&__input-placeholder{
 		position: relative;
-		margin-bottom: 16px;
+		margin-bottom: 6px;
 
 		&--inline{
 			width: 48%;
@@ -105,7 +116,7 @@
 	}
 
 	&__button-placeholder{
-		margin-top: 20px;
+		margin-top: 6px;
 	}
 
 	&__input,
@@ -114,19 +125,25 @@
 		padding: 0 0 0 20px;
 		width: 100%;
 		outline: none;
-		border: 1px solid #d7d7d7;
+		border: 1px solid #cccccc;
 		max-width: 100%;
-		font-size: 15px;
+		font-size: 16px;
 		font-family: $mainFontFamily;
-		background: #f6f5f1;
-		border-radius: 5px;
-		box-shadow: inset 0 2px 3px rgba(0,0,0,.13); 
-		&.error{
-			border-color: #ef6d51;
+		background: #fff;
+		border-radius: 0px;
+		transition: all .2s;
+		&:focus{
+			border-color: $purple;
+		}	
+		&--error{
+			border-color: #ff0000;
+			&:focus{
+				border-color: #ff0000;
+			}	
 		}
 	}
 	&__input{
-		&--h40{
+		&--m{
 			height: 40px;
 			line-height: 40px;
 		}
@@ -134,8 +151,8 @@
 	&__textarea{
 		padding-top: 10px;
 		height: 210px;
-		&--h120{
-			height: 120px;
+		&--m{
+			height: 84px;
 		}
 	}
 }

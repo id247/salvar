@@ -12,6 +12,11 @@
 	color: $text;
 }
 
+.html--modal {
+    overflow: hidden;
+    padding-right: 16px;
+}
+
 .html__body{
 	line-height: 1.2;
 }
@@ -39,10 +44,18 @@
 	}	
 }
 
+.c-yellow{
+	color: $yellow;
+}
+
+.c-purple{
+	color: $purple;
+}
+
 
 .text{
 	font-size: 18px;
-	line-height: (26/18);
+	line-height: (25/18);
 
 	h3{
 		font-size: 24px;

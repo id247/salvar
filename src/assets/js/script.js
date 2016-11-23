@@ -1,6 +1,6 @@
-'use strict';
+(function (window, document, $){
+	'use strict';
 
-export default (function (window, document, $){
 	console.log('run');
 
 	var maxHeight = 650;
@@ -24,11 +24,11 @@ export default (function (window, document, $){
 	function scrollMeTo(){
 
 		
-		const $header = $('#header');
+		var $header = $('#header');
 		
 		$('.js-goto').on('click', function(e){
-			const paddingTop = $(window).width() > maxWidth ? $header.outerHeight() : 0;
-			const $target = $(this.href.replace( /^.*\#/, '#' ) );
+			var paddingTop = $header.hasClass('header--scrolled') ? $header.outerHeight() : 0;
+			var $target = $(this.href.replace( /^.*\#/, '#' ) );
 			
 			if ($target.length === 1) {
 				e.preventDefault();
@@ -43,12 +43,12 @@ export default (function (window, document, $){
 	};
 
 	function header(){
-		const $header = $('header');
+		var $header = $('header');
 
 
 		function fix(){
-			const scrollTop = $(window).scrollTop();
-			const showPosition = 200;
+			var scrollTop = $(window).scrollTop();
+			var showPosition = 200;
 
 			if ( scrollTop > 0 && scrollTop <= showPosition ){
 				$header.addClass('header--hidden');
@@ -108,9 +108,9 @@ export default (function (window, document, $){
 
 		$('form').each( function(){
 
-			const $form = $(this);
-			const $button = $form.find('button[type="submit"]');
-			const $success = $form.find('.order-form__success');
+			var $form = $(this);
+			var $button = $form.find('button[type="submit"]');
+			var $success = $form.find('.order-form__success');
 			
 			$success.hide();
 
@@ -118,7 +118,7 @@ export default (function (window, document, $){
 
 				e.preventDefault();
 
-				const form = e.target;
+				var form = e.target;
 
 
 				$button.text('Отправка данных...');
@@ -156,7 +156,7 @@ export default (function (window, document, $){
 	function init(){
 
 		if (!isMobile){
-			header();
+			//header();
 		}
 
 		scrollMeTo();
@@ -164,8 +164,6 @@ export default (function (window, document, $){
 		form();
 	}
 
-	return {
-		init 
-	}
+	init();
 
 })(window, document, jQuery, undefined);

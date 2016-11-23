@@ -7,15 +7,19 @@
 //     font-style: normal;
 // }
 
+$roboto: 'Roboto Slab', serif;
+$sans: 'PT Sans', sans-serif;
+$open: 'Open Sans', sans-serif;
 
-$mainFontFamily: Helvetica, sans-serif;
+$mainFontFamily: $sans, sans-serif;
 
 //
 //colors
 //
 
-
-$text: #1c1c1c;
+$yellow: #fcac00;
+$purple: #373554;
+$text: $purple;
 
 //
 //medias

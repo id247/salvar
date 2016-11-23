@@ -17,26 +17,727 @@
  * ========================================================================== */
 
 .section{
-	padding: 80px 0 80px;
+	padding: 50px 0 50px;
+
+	&--centered{
+		text-align: center;
+
+		.section__text{
+			text-align: inherit;
+		}
+	}
+
+	&--purple{
+		background: $purple;
+		color: #fff;
+	}
+
+	&--yellow{
+		background: $yellow;
+		color: #fff;
+	}
 
 	&__wrap{
 		@include clearfix;
-		max-width: 1000px;
-		padding: 0 10px;
+		max-width: 1020px;
+		padding: 0 0px;
 		margin: auto;
 	}
 
 	&__title{
-		text-align: center;
+		color: $purple;
+		font-family: $roboto;
 		margin: 0 0 40px;
+		padding: 0 0 0 100px;
+		position: relative;
 		font-weight: 700;
-		font-size: 36px;
-		line-height: (50/36);
+		font-size: 42px;
+		line-height: (50/42);
+		text-indent: -100px;
+	}
+
+	&__subtitle{
+		font-family: $roboto;
+		margin: 0 0 20px;
+		font-weight: 700;
+		font-size: 26px;
+		line-height: (42/26);
+		&:last-child{
+			margin-bottom: 0;
+		}		
+	}
+
+	&__title-id{
+		font-size: 62px;
+		color: $yellow;
 	}
 
 	&__text{
-		margin: 0 0 30px;		
+		margin: 0 0 30px;
+		text-align: justify;
+		&:last-child{
+			margin-bottom: 0;
+		}		
 	}
 }
 
- 
+/* ==========================================================================
+ * header
+ * ========================================================================== */
+
+.header{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 500;
+	color: #fff;
+
+	&__logo-placeholder{
+		float: left;
+	}
+
+	&__logo{
+	}
+
+	&__content{
+		float: right;
+		width: 700px;
+		text-align: right;
+	}
+
+	&__phone{
+		text-align: right;
+		color: $yellow;
+		font-weight: 700;
+		font-size: 16px;
+		margin: 0 0 15px;
+	}
+}
+
+/* ==========================================================================
+ * logo
+ * ========================================================================== */
+
+.logo{
+	padding: 8px 12px;
+	border: 3px solid #fff;
+	display: inline-block;
+
+	&__inner{
+		display: inline-block;
+		color: $yellow;
+		text-transform: uppercase;
+		font-family: $open;
+		font-size: 16px;
+		font-weight: 700;
+		padding: 8px 12px;
+		border: 3px solid;
+	}
+}
+
+/* ==========================================================================
+ * menu
+ * ========================================================================== */
+
+.menu{
+	&__list{
+
+	}
+	
+	&__item{
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 0 15px 24px;
+
+		&:first-child{
+			margin-left: 0;
+		}
+	}
+
+	&__href{
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+
+		&:hover{
+			color: $yellow;
+		}
+	}
+}
+
+/* ==========================================================================
+ * home
+ * ========================================================================== */
+
+.home{
+	background: $purple url(../images/bg/home.jpg) 50% 50% no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #fff;
+	position: relative;
+
+	padding: 260px 0 180px; 
+
+	&__title{
+		text-indent: 0;
+		color: #fff;
+		padding-left: 0;
+	}
+
+	&__desc{
+		text-align: left;
+	}
+
+	&__more-placeholder{
+		position: absolute;
+		bottom: 30px;
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+
+	&__more{
+		display: inline-block;
+		@include sprite($arrow-down);
+	}
+}
+
+/* ==========================================================================
+ * goat
+ * ========================================================================== */
+
+.goat{
+	padding-top: 90px;
+
+	&__image-placeholder{
+		float: left;
+		margin: 0 0 0 -30px;
+		width: 420px; 
+	}
+
+	&__image{
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__text{
+		margin: 0 0 0 400px;
+		padding: 30px 0 0;
+	}
+}
+/* ==========================================================================
+ * owl
+ * ========================================================================== */
+
+.owl{
+	padding-top: 90px;
+
+	&__image-placeholder{
+		float: right;
+		width: 300px; 
+	}
+
+	&__image{
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__text{
+		margin: 0 320px 0 0;
+	}
+}
+
+
+/* ==========================================================================
+ * risks
+ * ========================================================================== */
+
+.risks{
+
+	padding-bottom: 0;
+
+	&__subtitle{
+		font-size: 21px;
+		font-weight: 700;
+		font-family: $roboto;
+		color: $yellow;
+		margin: 0 0 30px;
+	}
+
+	&__items{
+		background: $purple;
+		color: #fff;
+		padding: 50px 0;
+	}
+
+	&__list{
+		margin: 0 0 0 100px;
+	}
+
+	&__item{
+		margin: 0 0 45px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}
+
+.risks-item{
+	padding: 0 0 0 64px;
+	position: relative;
+
+	&:before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		@include sprite($quote-yellow);
+	}
+
+	&__title{
+		font-size: 18px;
+		line-height: (25/18);
+		color: $yellow;
+		font-weight: 700;
+		margin: 0 0 30px;
+	}
+}
+
+
+/* ==========================================================================
+ * about
+ * ========================================================================== */
+
+.about{
+
+	padding-bottom: 0;
+
+	&__numbers{
+		background: $yellow;
+		color: #fff;
+		padding: 50px 0;
+		margin: 50px 0 0;
+	}
+}
+
+.about-numbers{
+
+	&__list{
+		text-align: center;
+		margin: 0 -1% -30px;
+	}
+	
+	&__item{
+		display: inline-block;
+		text-align: left;
+		vertical-align: top;
+		width: 30%;
+		margin: 0 1% 30px;
+		@include clearfix;
+	}
+
+	&__number{
+		font-size: 62px;
+		text-align: right;
+		width: 80px;
+		font-family: $roboto;
+		float: left;
+		line-height: 1;
+	}
+
+	&__text{
+		font-size: 14px;
+		line-height: 1.3;
+		font-family: $open;
+		font-weight: 700;
+		margin: 10px 0 0 100px;
+
+		&:before{
+			content: '';
+			display: block;
+			width: 56px;
+			height: 3px;
+			background: #fff;
+			margin: 0 0 10px;
+		}
+	}
+}
+
+/* ==========================================================================
+ * cases
+ * ========================================================================== */
+
+.cases{
+
+	&__list{
+		margin: 0 0 0 100px;
+	}
+
+	&__item{
+		margin: 0 0 20px;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}
+
+.cases-item{
+	padding: 0 0 0 62px;
+
+	&__title{
+		min-height: 42px;
+		position: relative;
+		padding: 10px 0 0;
+
+		&:before{
+			content: '';
+			position: absolute;
+			left: -62px;
+			top: 0;
+			@include sprite($right-arrow);
+		}
+	}
+
+	&__href{
+		font-size: 18px;
+		font-weight: 700;
+		text-decoration: none;
+		color: $purple;
+
+		border-bottom: 1px dotted;
+
+		transition: all .2s;
+
+		&:hover{
+			border-color: transparent;
+		}
+	}
+
+	&__content{
+		padding: 15px 0;
+	}
+
+	&__text{
+		color: $purple;
+	}
+}
+
+
+/* ==========================================================================
+ * people
+ * ========================================================================== */
+
+.people{
+
+	&__title{
+		font-size: 21px;
+		color: $yellow;
+		text-indent: 0;
+		padding-left: 100px;
+	}
+
+	&__slider{
+		position: relative;
+	
+		.bx-prev,
+		.bx-next{
+			position: absolute;
+			top: 180px;
+			margin-top: -10px;
+			opacity: .5;
+			text-indent: -9999px;
+
+			&:hover{
+				opacity: 1;
+			}
+		}
+
+		.bx-prev{
+			left: -20px;
+			@include sprite($prev);
+		}
+
+		.bx-next{
+			right: -20px;
+			@include sprite($next);
+		}
+	}
+
+	&__list{
+		
+	}
+
+	&__item{
+		
+	}
+}
+
+.people-item{
+	padding: 0 100px 0 100px;
+
+	@include clearfix;
+
+	&__image-placeholder{
+		float: left;
+		width: 270px;
+	}
+
+	&__image{
+		width: 100%;
+		height: auto;
+	}
+
+	&__content{
+		margin: 0 0 0 300px;
+	}
+
+
+	&__title{
+		font-size: 21px;
+		font-weight: 700;
+		font-family: $roboto;
+		margin: 0 0 15px;
+	}
+
+	&__post{
+		font-size: 16px;
+		font-style: italic;
+		margin: 0 0 25px;
+	}
+}
+
+
+/* ==========================================================================
+ * offer
+ * ========================================================================== */
+
+.offer{
+
+	&__text{
+		margin: 0 0 0 100px;
+
+		h3{
+			font-size: 21px;
+			color: $yellow;
+			font-family: $roboto;
+			margin: 0 0 2.5em;
+		}
+
+		h4{
+			font-weight: 700;
+			margin: 0 0 2.5em;
+		}
+
+		ul{
+			margin: 0 0 2.5em;
+		}
+
+		li{
+			padding: 0 0 0 30px;
+			position: relative;
+			margin: 0 0 2.5em;
+
+			&:before{
+				content: '';
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				background: $yellow;
+				position: absolute;
+				top: 9px;
+				left: 0;
+			}
+		}
+	}
+}
+
+
+/* ==========================================================================
+ * contacts
+ * ========================================================================== */
+
+.contacts{
+
+	&__content{
+		padding: 0 65px 0 100px;
+		@include clearfix;		
+	}
+
+	&__text{
+		float: left;
+		width: 550px;
+		font-size: 16px;
+
+		p{
+			margin: 0 0 .5em;
+		}
+
+		em{
+			font-size: 14px;
+		}
+
+		h3{
+			padding: 15px 0;
+			font-size: 27px;
+			font-weight: 700;
+			color: $yellow;
+			font-family: $roboto;
+		}
+	}
+
+	&__form{
+		float: right;
+		width: 280px;
+	}
+}
+
+.contacts-form{
+	
+	&__box{
+		padding: 20px;
+		margin: 0 0 20px;
+		border: 1px solid #d7d7d7;
+		box-shadow: 0 5px 4px rgba(0,0,0,.05);
+	}
+
+	&__title{
+		font-size: 24px;
+		font-weight: 700;
+		font-family: $roboto;
+		margin: 0 0 15px;
+	}
+
+	&__desc{
+		text-align: center;
+		font-size: 14px; 
+		font-style: italic;
+	}
+
+	&__button{
+		width: 100%;
+	}
+}
+
+
+/* ==========================================================================
+ * map
+ * ========================================================================== */
+
+.map{
+	padding: 0;
+	height: 375px;
+	background: #ccc;
+}
+
+/* ==========================================================================
+ * footer
+ * ========================================================================== */
+
+.footer{
+	font-family: $open;
+
+	&__copy{
+		float: left;
+		width: 25%;
+		font-size: 12px;
+	}
+
+	&__content{
+		float: left;
+		width: 50%;
+		font-size: 12px;
+		color: #aaaaaa;
+		text-align: center;
+	}
+
+	&__make{
+		float: right;
+		width: 25%;
+		text-align: right;
+		font-size: 14px;
+	}
+}
+
+/* ==========================================================================
+ * modal
+ * ========================================================================== */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    background: rgba(0,0,0,.7);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal--visible {
+    opacity: 1;
+    visibility: visible
+}
+.modal__content {
+    max-width: 860px;
+    top: 50px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    background: #fff;
+
+    &--thanks{
+    	width: 310px;
+    	height: 110px;
+    	padding: 30px 10px;
+    	&:after{
+    		display: none;
+    	}
+    }
+
+    &:after{
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 20px;
+		bottom: 0;
+		height: 200px;
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 100%);
+   		pointer-events: none;
+    }
+}
+.modal__inner{
+    padding: 50px 50px 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.modal__text{
+	h3{
+		color: $yellow;
+		font-family: $roboto;
+		font-size: 21px;
+	}
+}
+.modal__title{
+		color: $yellow;
+		font-family: $roboto;
+		font-size: 21px;
+		font-weight: 700;
+	text-align: center;
+}
+.modal__close {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    background-color: transparent;
+    text-indent: -9999px;
+    @include sprite($close);
+}

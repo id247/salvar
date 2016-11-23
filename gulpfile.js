@@ -8,9 +8,6 @@ const spritesmith = require('gulp.spritesmith');
 const revHash = require('rev-hash');
 const del = require('del');
 
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
-
 const devMode = process.env.NODE_ENV || 'development';
 
 const destFolder = devMode === 'development' ? 'development' : 'production';
@@ -54,11 +51,7 @@ gulp.task('assets-files', function(){
 		.pipe($.newer(destFolder + '/assets'))
 		.pipe(gulp.dest(destFolder + '/assets'))
 });
-gulp.task('assets-favicon', function(){
-	return gulp.src('src/assets/favicon.ico', {since: gulp.lastRun('assets-favicon')})
-		.pipe($.newer(destFolder))
-		.pipe(gulp.dest(destFolder))
-});
+
 gulp.task('sprite', function(callback) {
 
 	const spriteData = 
@@ -78,7 +71,7 @@ gulp.task('sprite', function(callback) {
 	.on('end', callback);
 
 });
-gulp.task('assets', gulp.parallel('assets-files', 'assets-favicon', 'sprite'));
+gulp.task('assets', gulp.parallel('assets-files', 'sprite'));
 
 
 // HTML
@@ -144,6 +137,13 @@ gulp.task('html', function(callback){
 });
 
 
+gulp.task('js', function(){
+	return gulp.src(['src/js/**/*.*'], {since: gulp.lastRun('js')})
+		.pipe($.newer(destFolder + '/assets/js'))
+		.pipe(gulp.dest(destFolder + '/assets/js'))
+});
+
+
 // BUILD
 gulp.task('server', function () {
 	gulp.src(destFolder)
@@ -158,6 +158,7 @@ gulp.task('server', function () {
 gulp.task('watch', function(){
 	gulp.watch('src/sass/**/*.scss', gulp.series('sass'));
 	gulp.watch('src/assets/**/*', gulp.series('assets'));
+	gulp.watch('src/js/**/*', gulp.series('js'));
 	gulp.watch('src/html/**/*.html', gulp.series('html'));
 });
 
@@ -165,7 +166,7 @@ gulp.task('clean', function() {
 	return del([destFolder]);
 });
 
-gulp.task('build', gulp.series('webpack', 'assets', 'sass', 'html'));
+gulp.task('build', gulp.series('assets', 'sass', 'html'));
 
 
 // gulp start - very first start to build the project and run server in 'development' folder
