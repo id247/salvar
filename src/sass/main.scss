@@ -93,6 +93,39 @@
 	z-index: 500;
 	color: #fff;
 
+	transition: transform .4s;
+
+	&--hidden{
+		transform: translateY(-100%);
+	}
+
+	&--scrolled{
+		position: fixed;
+		transform: translateY(0);
+		background: $purple;
+		padding: 30px 0 30px;
+
+		.header__phone{
+			display: none;
+		}
+
+
+		.header__back{
+			display: block;
+		}
+
+		.logo{
+			border: 0;
+			padding: 0;
+
+			&__inner{
+				border: 0;
+				padding: 0;
+				color: #fff;
+			}
+		}
+	}
+
 	&__logo-placeholder{
 		float: left;
 	}
@@ -104,6 +137,7 @@
 		float: right;
 		width: 700px;
 		text-align: right;
+		position: relative;
 	}
 
 	&__phone{
@@ -113,6 +147,18 @@
 		font-size: 16px;
 		margin: 0 0 15px;
 	}
+
+	&__back{
+		@include sprite($arrow-up);
+		text-indent: -9999px;
+		position: absolute;
+		top: 0;
+		left: 100%;
+		bottom: 0;
+		margin: auto 0 auto 20px;
+
+		display: none;
+	}
 }
 
 /* ==========================================================================
@@ -120,7 +166,7 @@
  * ========================================================================== */
 
 .logo{
-	padding: 8px 12px;
+	padding: 7px 7px 7px;
 	border: 3px solid #fff;
 	display: inline-block;
 
@@ -130,8 +176,9 @@
 		text-transform: uppercase;
 		font-family: $open;
 		font-size: 16px;
+		letter-spacing: 0.05em;
 		font-weight: 700;
-		padding: 8px 12px;
+		padding: 10px 12px 9px 15px;
 		border: 3px solid;
 	}
 }
@@ -142,7 +189,7 @@
 
 .menu{
 	&__list{
-
+		margin: 0 0 -15px;
 	}
 	
 	&__item{
@@ -160,6 +207,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 
+		&.active,
 		&:hover{
 			color: $yellow;
 		}
@@ -177,7 +225,20 @@
 	color: #fff;
 	position: relative;
 
-	padding: 260px 0 180px; 
+
+	padding: 140px 0 80px; 
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	@media (min-width: 1070px){
+		min-height: 100vh;
+	}
+
+	&__inner{
+		width: 100%;
+	}
 
 	&__title{
 		text-indent: 0;
@@ -200,6 +261,32 @@
 	&__more{
 		display: inline-block;
 		@include sprite($arrow-down);
+	}
+}
+
+/* ==========================================================================
+ * cut
+ * ========================================================================== */
+
+.cut{
+
+	padding: 0 0 3px;
+
+	&__content{
+		transition: all .6s;
+
+		&--invisible{
+			position: absolute;
+			opacity: 0;
+			visibility: hidden;
+			transition: all .0s;
+		}
+	}
+
+	&__href{
+		color: $purple;
+		text-decoration: none;
+		border-bottom: 1px dotted;
 	}
 }
 
@@ -261,7 +348,6 @@
 		font-size: 21px;
 		font-weight: 700;
 		font-family: $roboto;
-		color: $yellow;
 		margin: 0 0 30px;
 	}
 
@@ -501,6 +587,14 @@
 		margin: 0 0 15px;
 	}
 
+	&__text{
+		margin: 0 0 1em;
+
+		p{
+			margin-bottom: 1em;
+		}
+	}
+
 	&__post{
 		font-size: 16px;
 		font-style: italic;
@@ -720,6 +814,7 @@
     bottom: 0;
 }
 .modal__text{
+	padding-bottom: 50px;
 	h3{
 		color: $yellow;
 		font-family: $roboto;

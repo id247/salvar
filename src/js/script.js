@@ -48,9 +48,9 @@
 
 		function fix(){
 			var scrollTop = $(window).scrollTop();
-			var showPosition = 200;
+			var showPosition = 400;
 
-			if ( scrollTop > 0 && scrollTop <= showPosition ){
+			if ( scrollTop > 200 && scrollTop <= showPosition ){
 				$header.addClass('header--hidden');
 				$header.removeClass('header--scrolled');
 			}else if ( scrollTop > showPosition ){
@@ -70,6 +70,7 @@
 	function menu(){
 		var $menuHrefs = $('.menu__href');
 		var $sections = $('.section');
+		var $header = $('#header');
 
 		var winHeight = ( window.innerHeight || document.documentElement.clientHeight );
 
@@ -80,7 +81,7 @@
 				var rectTop = Math.round(rect.top);
 				var rectBottom = Math.round(rect.bottom);
 
-				if (rectTop <= 50 && rectBottom / 2 <= winHeight ){
+				if (rectTop <= $header.outerHeight() + 10  ){
 					$menuHrefs.removeClass('active');
 					$menuHrefs.filter('[href="#' + sectionId + '"]').addClass('active');
 				}
@@ -107,55 +108,56 @@
 
 		var $successOpener = $('.js-succes-opener');
 		var $errorOpener = $('.js-error-opener');
+		var errorClass = 'form__input--error';
+
+		function validateEmail(email) {
+			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return re.test(email);
+		}
+
+		function validate(){
+
+			var isValid = true;
+			var $this = $(this);
+
+			if ($this.val().length === 0){
+				isValid = false;
+				$this.addClass(errorClass);
+			}else{
+				$this.removeClass(errorClass);
+			}
+
+			if ($this.attr('type') === 'email' && !validateEmail($this.val())){
+				isValid = false;
+				$this.addClass(errorClass);
+			}
+
+			return isValid;
+		}
+
+		function validation($inputs){
+			var isValid = true;
+			
+			$inputs.each(function(){
+				isValid = validate.call(this);
+			});
+
+			return isValid;
+		}
 
 		$('form').each( function(){
-
-
 
 			var $form = $(this);
 			var $inputs = $form.find('.required');
 			var $button = $form.find('button[type="submit"]');
 
-			function validation(){
-				var isValid = true;
-				var errorClass = 'form__input--error';
-				
-				var $email = $inputs.filter('[name="email"]');
-
-				function validateEmail(email) {
-					var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-					return re.test(email);
-				}
-
-				$inputs.each(function(){
-					var $this = $(this);
-					if ($this.val().length === 0){
-						$this.addClass(errorClass);
-						isValid = false;
-					}else{
-						$this.removeClass(errorClass);
-					}
-				});
-
-				if (!validateEmail($email.val())){
-					isValid = false;
-					$email.addClass(errorClass);
-				}else{
-					$email.removeClass(errorClass);
-				}
-
-				console.log(isValid);
-
-				return isValid;
-			}
-
-			$inputs.on('keyup change', validation);
+			$inputs.on('keyup change', validate);
 			
 			$form.on('submit', function(e){
 
 				e.preventDefault();
 
-				if ( !validation() ){
+				if ( !validation($inputs) ){
 					return false;
 				}
 
@@ -263,18 +265,51 @@
 
 	}
 
+	function cut(){
+		var $cutContents = $('.js-cut-content');
+		var $cutOpener = $('.js-cut-opener');
+
+		$cutContents.addClass('cut__content--invisible');
+
+		$cutOpener.on('click', function(e){
+			e.preventDefault();
+
+			var $this = $(this);
+			var $content = $this.closest('.js-cut').find('.js-cut-content');
+			var $sliderViewport = $this.closest('.bx-viewport');
+			var $sliderSlide = $this.closest('.people-item');
+
+			if ($content.hasClass('cut__content--invisible')){
+				$content.removeClass('cut__content--invisible');
+				$sliderViewport.css('height', $sliderSlide.outerHeight());
+				$this.text('Скрыть');
+			}else{
+				$content.addClass('cut__content--invisible');
+				$sliderViewport.css('height', $sliderSlide.outerHeight());
+				$this.text('Подробнее');
+			}
+			
+		})
+	}
+
+	function wow(){
+		new WOW().init();
+	}
+
 	function init(){
 
 		if (!isMobile){
-			//header();
+			header();
 		}
 
 		scrollMeTo();
 		menu();
 		form();
+		cut();
 		accordion();
 		slider();
 		modal();
+		wow();
 	}
 
 	init();

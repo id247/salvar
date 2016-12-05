@@ -23,7 +23,7 @@
 						});
 
 					var position = myMap.getGlobalPixelCenter();
-					myMap.setGlobalPixelCenter([ position[0] - 0, position[1] ]);
+					myMap.setGlobalPixelCenter([ position[0] - 0, position[1] - 40 ]);
 
 				  	myPlacemark = new ymaps.Placemark(
 				  		place, 
@@ -34,7 +34,7 @@
 							iconLayout: 'default#image',
 		                    iconImageHref: 'assets/images/map-point.png', // картинка иконки
 		                    iconImageSize: [28, 38], // размеры картинки
-		                    //iconImageOffset: [-28, -19] // смещение картинки
+		                    iconImageOffset: [-38, -69] // смещение картинки
 	                    }
 					);
 
