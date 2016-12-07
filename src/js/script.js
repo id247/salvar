@@ -42,6 +42,10 @@
 
 	};
 
+	function home(){
+		$('#home').addClass('home--fullheight');
+	}
+
 	function header(){
 		var $header = $('header');
 
@@ -254,7 +258,7 @@
 		$modalOpen.on('click', function(e){
 			e.preventDefault();
 			
-			const id = $(this).attr('href');
+			var id = $(this).attr('href');
 
 			show(id);
 		});
@@ -299,7 +303,9 @@
 	function init(){
 
 		if (!isMobile){
+			home();
 			header();
+			wow();
 		}
 
 		scrollMeTo();
@@ -309,7 +315,6 @@
 		accordion();
 		slider();
 		modal();
-		wow();
 	}
 
 	init();

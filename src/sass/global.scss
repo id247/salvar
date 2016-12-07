@@ -57,6 +57,10 @@ a[href^="tel"]{
     text-decoration:none;
 }
 
+p {
+   max-height: 999999px;
+}
+
 .text{
 	font-size: 18px;
 	line-height: (25/18);

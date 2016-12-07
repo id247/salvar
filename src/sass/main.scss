@@ -221,19 +221,19 @@
 .home{
 	background: $purple url(../images/bg/home.jpg) 50% 50% no-repeat;
 	background-size: cover;
-	background-attachment: fixed;
 	color: #fff;
 	position: relative;
 
 
-	padding: 140px 0 80px; 
+	padding: 170px 0 120px; 
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 
-	@media (min-width: 1070px){
+	&--fullheight{
 		min-height: 100vh;
+		background-attachment: fixed;
 	}
 
 	&__inner{
